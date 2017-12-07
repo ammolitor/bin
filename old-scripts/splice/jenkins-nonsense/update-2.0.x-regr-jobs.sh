@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for job in $(java -jar jenkins-cli.jar -s http://jm:8080 list-jobs test_2.0.x | grep -v benchmarkcluster); do
+for job in $(java -jar jenkins-cli.jar -s http://jm:8080 list-jobs test_2.5.x | grep -v benchmarkcluster); do
     echo ${job}
     java -jar jenkins-cli.jar -s http://jm:8080 get-job test_2.0.x/${job} | \
         sed 's#<string>cdh5.5.1</string>#<string>cdh5.5.2</string>#' | \

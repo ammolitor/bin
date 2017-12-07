@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for dir in $( find $(pwd) -mindepth 1 -maxdepth 1 -type d) ; do
-	echo -e "\n\n############################## UPDATING "$dir" ##############################\n"
+	echo -e "\n\n############################## CLEANING "$dir" ##############################\n"
 	cd $dir
 	if [ "${1}" == "-y" ]
 	then

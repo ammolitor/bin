@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ ${#} -ne 1 ] ; then
+  echo "provide exactly one ipmi hostname"
+  exit 1
+fi
+
+iinterface="lanplus"
+iusername="root"
+ipassword="bigdata4u"
+ihnpre="stl-colo-ipmi"
+
+if [[ ${1} =~ ${ihnpre} ]] ; then
+  ihostname="${1}"
+else
+  ihostname="${ihnpre}-${1}"
+fi
+
+ipmitool \
+  -I ${iinterface} \
+  -U ${iusername} \
+  -P ${ipassword} \
+  -H ${ihostname} \
+  sol activate
