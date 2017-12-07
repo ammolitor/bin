@@ -1,0 +1,2 @@
+PID=`ps -fu ${LOGNAME} | grep native_threads | grep -v grep | cut -c 10-14`
+kill -9 $PID

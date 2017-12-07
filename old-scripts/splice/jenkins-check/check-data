@@ -1,0 +1,7 @@
+#!/bin/bash
+
+slaves=( js01 js02 js03 js04 js05 js06 js07 js08 js09 js10 js11 js12 js13 js14 js15 js16 js17 js18 js19 js20 js21 js22 js23 js24 js25 js26 js27 js28 )
+
+for slave in ${slaves[@]}; do
+	ssh ${slave} 'find /data -type f -exec md5sum '{}' \;' > ${slave}.out
+done

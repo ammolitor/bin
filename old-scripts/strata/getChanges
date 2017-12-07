@@ -1,0 +1,13 @@
+#!/bin/ksh
+#
+#This gets the Changes after a cleanBuild
+#
+echo "\n Conflicts \n"
+grep "^C " $LOGDIR/cleanBuild.log.$VERSION
+echo "\n Merges \n"
+grep "^M " $LOGDIR/cleanBuild.log.$VERSION
+echo "\n Patches \n"
+grep "^P " $LOGDIR/cleanBuild.log.$VERSION
+echo "\n Updates \n"
+grep "^U " $LOGDIR/cleanBuild.log.$VERSION
+echo "\n\n"

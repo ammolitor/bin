@@ -1,0 +1,12 @@
+if [ $# -ne 1 ]
+then
+    echo "\n\n\tUsage:  $0 SWITCH_ID\n\n"
+    exit 0
+fi
+
+sqlplus -s $C3_SQLID <<EOF
+
+select NAME, VALUE from IN_CONN_PRP where DSS_CONNECTION_SID in
+     (select DSS_CONNECTION_SID from IN_CONN where PK_SWITCH in
+	      (select IN_SID from IN_DSS where SWITCH_ID='$1')) and NAME in('account', 'password');
+EOF

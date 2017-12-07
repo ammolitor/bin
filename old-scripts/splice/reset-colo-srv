@@ -1,0 +1,16 @@
+#!/bin/bash
+
+srvs=( srv115 )
+
+for srv in ${srvs[@]}  ; do
+  IPMINAME="stl-colo-ipmi-${srv}"
+  echo ${IPMINAME}
+  ipmitool -I lanplus -U root -P bigdata4u -H ${IPMINAME} chassis bootdev pxe
+  sleep 3
+  ipmitool -I lanplus -U root -P bigdata4u -H ${IPMINAME} chassis bootparam set bootflag force_pxe
+  sleep 3
+  ipmitool -I lanplus -U root -P bigdata4u -H ${IPMINAME} chassis power cycle
+  sleep 3
+  unset IPMINAME
+  echo ''
+done

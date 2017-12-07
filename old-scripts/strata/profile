@@ -1,0 +1,47 @@
+#### Begin standard profile setup
+
+# Use the last four digits of your phone number instead of 1234 in
+# the following.
+
+. /usr/local/sde/env/profile
+
+initializeEnvironment C3C V9_9_9_9 sun 9732
+
+#### End standard profile setup
+
+stty erase 
+
+. ${HOME}/.alias
+npw () { zpi -p -lj -lw -w4 -q $* | lp -dnp1; lpstat -o;}
+npd () { zpi -p -lj -d  -w4 -q $* | lp -dnp1; lpstat -o;}
+sql () { sqlplus $C3_SQLID;}
+sv9 () { setVersion V9_9_9_9;}
+sv82() { setVersion V8_2_0_0;}
+sv83() { setVersion V8_3_0_0;}
+
+UNAME=`uname -n`; export UNAME
+WHO=`whoami`; export WHO
+PS1='${UNAME}:${VERSION} > '; export PS1
+
+RDFDIR=java/etc/report
+export RDFDIR
+
+
+unset DEPRECATION
+unset DBUG
+
+#unset LOG_FILE_PATH
+
+DEBUG=1
+export DEBUG
+
+DEBUG_LOCAL=1
+export DEBUG_LOCAL
+
+EDITOR=vi
+export EDITOR
+
+ADSCHDDIR=$ADSCHDDIR/schedule
+export EDITOR
+
+PATH=.:/usr/local/backup:${HOME}/bin:${PATH}

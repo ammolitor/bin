@@ -1,0 +1,53 @@
+#!/bin/bash
+#################
+##REUTERS STUFF
+#################
+## old servers
+#net use R: '\\aviewer\C' /user:bridge data /persistent:no
+#net use S: '\\aviewer1\C' /user:bridge data /persistent:no
+#net use T: '\\aviewer2\C' /user:bridge data /persistent:no
+#net use U: '\\aviewer3\C' /user:bridge data /persistent:no
+#net use V: '\\aviewer4\C' /user:bridge data /persistent:no
+#net use W: '\\aviewer5\C' /user:bridge data /persistent:no
+#net use X: '\\aviewer6\C' /user:bridge data /persistent:no
+#net use Y: '\\aviewer7\C' /user:bridge data /persistent:no
+#net use Z: '\\aviewer8\C' /user:bridge data /persistent:no
+## new servers
+#net use H: '\\10.91.31.170\C' /user:bridge data /persistent:no
+#net use I: '\\10.91.31.171\C' /user:bridge data /persistent:no
+#net use J: '\\10.91.31.172\C' /user:bridge data /persistent:no
+#net use K: '\\10.91.31.173\C' /user:bridge data /persistent:no
+#net use L: '\\10.91.31.174\C' /user:bridge data /persistent:no
+#net use M: '\\10.91.31.175\C' /user:bridge data /persistent:no
+#net use N: '\\10.91.31.176\C' /user:bridge data /persistent:no
+#net use O: '\\10.91.31.177\C' /user:bridge data /persistent:no
+#net use P: '\\10.91.31.178\C' /user:bridge data /persistent:no
+#net use Q: '\\10.91.31.179\C' /user:bridge data /persistent:no
+
+#####################
+# bioMerieux drives 
+#####################
+
+if [ "$1" == "connect" ] || [ "$1" == "-connect" ];
+then
+	net use G: '\\stlbmx01\shared$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use I: '\\stlitfs01\it$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use J: '\\stlitfs01\apps$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use K: '\\usstlfs02\molitoa1$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use o: '\\us8010q\rdeng$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use R: '\\stlitfs01\ren$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use S: '\\stlitfs01\Common$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+	net use T: '\\stlitfs01\Training&Reference$' #/user:'US\molitoa1' vmware5FTW! /persistent:no
+elif [ "$1" == "disconnect" ] || [ "$1" == "-disconnect" ];
+then
+	net use /delete G:
+	net use /delete I:
+	net use /delete J:
+	net use /delete K:
+	net use /delete O:
+	net use /delete R:
+	net use /delete S:
+	net use /delete T:
+else
+echo "Please specify connect or disconnect"
+fi

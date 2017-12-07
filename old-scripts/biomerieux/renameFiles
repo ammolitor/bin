@@ -1,0 +1,1 @@
+for i in *.pdf; do j=`echo $i | sed 's/Package_Insert_-_//'`; mv "$i" "$j"; done

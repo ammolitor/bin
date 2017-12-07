@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dir_list1=( $(find ${1} -name pom.xml | sort ) )
+dir_list2=( $(find ${2} -name pom.xml | sort ) )
+
+file=0
+
+while [ ${file} != ${#dir_list1[@]} ]
+do
+	vim -d ${dir_list1[${file}]} ${dir_list2[${file}]}
+	let file=${file}+1
+done

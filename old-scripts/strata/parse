@@ -1,0 +1,26 @@
+fileList=`ls stations`
+for i in $fileList
+do
+  #
+  # bring the file locally.
+  #
+  cp stations/$i .
+
+  #uncompress $i
+  file=`echo $i|cut -c 1-14`
+  dn=`echo $i|cut -c 1-10`
+
+  #
+  # translate the field separators into CR/LF
+  #
+  cat $file | tr '\006' '\012' > newFile
+  rm $file
+
+  #
+  # blindly created the directory.  if it already exists, so what
+  #
+  #mkdir $type 1>/dev/null 2>&1
+
+  mv newFile $file
+
+done

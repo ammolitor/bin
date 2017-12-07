@@ -1,0 +1,1 @@
+egrep -inh "err|fail" $LOGDIR/cleanBuild.log.$VERSION |egrep -v "c3_errors|files/errs|adberrpg|gui/error|noperror|error.o|-c  -w -xcg92 -mt|errlog|.err|jikes -g|ErrorLog|FailTest|MemberRule|Error 2"

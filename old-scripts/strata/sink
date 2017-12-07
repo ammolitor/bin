@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+x=0
+while [ $x -lt 100 ]
+do
+echo "1 HOST 00 0 00 "$x" IBN STDLN 6X17AC N" >> R.FILE
+echo "2 97010"$x" AARONS 0 0 636" >> R.FILE
+echo "9 3WC $" >> R.FILE
+echo "10 0 NAME PUBLIC AARONS" >> R.FILE
+echo "99" >> R.FILE 
+let x=x+1
+done

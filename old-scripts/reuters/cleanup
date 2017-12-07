@@ -1,0 +1,11 @@
+echo "Deleting Local Settings-App Data-Reuters"
+rm -rf /cygdrive/C/"Documents and Settings"/Administrator/"Local Settings"/"Application Data"/Reuters
+echo "Deleting App Data-Rueters"
+rm -rf /cygdrive/C/"Documents and Settings"/Administrator/"Application Data"/Reuters
+echo "Deleting Program Files-Common Files-Reuters Shared"
+rm -rf /cygdrive/C/"Program Files"/"Common Files"/"Reuters Shared"
+echo "Deleting Program Files-Reuters"
+rm -rf /cygdrive/C/"Program Files"/Reuters
+echo "Deleting Downloaded Program Files-VersionManager."
+rm -rf /cygdrive/C/WINDOWS/"Downloaded Program Files"/VersionManager.*
+echo "Done!"

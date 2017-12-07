@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm /cygdrive/c/Documents\ and\ Settings/molitoa1/Recent/*.lnk

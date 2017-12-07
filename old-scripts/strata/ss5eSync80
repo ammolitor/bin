@@ -1,0 +1,27 @@
+#!/bin/ksh
+
+# This script will use a java class to fix 5ESS
+# dump files that are 80 Characters wide and
+# make them their native width
+
+# Check for proper usage
+if [ $# -ne 1 ]
+then
+    echo "\n\n\tUsage:  $0 filename (include full path)\n\n"
+    exit 0
+fi
+
+OUTPUT=$1.conv
+
+# use java class to adjust line legnth of switch dump file
+java ImportedFileConverter $1 $OUTPUT
+
+CHECK=`ls -l SS5E_CONST_FEAT_MDR_VT5ESS_2928992.out.conv | cut -c  35-40`
+
+if [ $CHECK -eq 0 ]
+then
+    OUTPUT=$1
+fi
+
+# use dataSync to parse Converted file into database
+dataSync Switch 5ESS JOB_CLASSNAME strata.pswitch.ss5e.dataSync.ConstructedFeaturesSyncJob PARSE Y DATAFILE $OUTPUT

@@ -1,0 +1,26 @@
+tput setaf 0; echo this is 0
+tput sgr0
+
+tput setaf 1; echo this is 1
+tput sgr0
+
+tput setaf 2; echo this is 2
+tput sgr0
+
+tput setaf 3; echo this is 3
+tput sgr0
+
+tput setaf 4; echo this is 4
+tput sgr0
+
+tput setaf 5; echo this is 5
+tput sgr0
+
+tput setaf 6; echo this is 6
+tput sgr0
+
+tput setaf 7; echo this is 7
+tput sgr0
+
+tput setaf 8; echo this is 8
+tput sgr0

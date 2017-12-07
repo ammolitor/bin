@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "${1}" == "stop" ]; then
+    sudo kill -2 $(ps aux | awk '/Pritunl.app/{print $2}')
+    sudo kill -9 $(ps aux | awk '/pritunl-service/{print $2}')
+    sudo launchctl unload /Library/LaunchAgents/com.pritunl.client.plist
+    sudo launchctl unload /Library/LaunchDaemons/com.pritunl.service.plist
+elif [ "${1}" == "start" ]; then
+    sudo launchctl load /Library/LaunchAgents/com.pritunl.client.plist
+    sudo launchctl load /Library/LaunchDaemons/com.pritunl.service.plist
+    sudo pritunl-service &
+fi
+
+
+

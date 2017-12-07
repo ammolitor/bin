@@ -1,0 +1,19 @@
+# Check for proper usage
+if [ $# -ne 1 ]
+then
+    echo "\n\n\tUsage:  $0 filename (include full path)\n\n"
+    exit 0
+fi
+
+file=${1}
+
+reList=( "s/^[0-9]*\.\t/#/" "s/ASSERT:/__ASSERT:__/" "s/PREREQUISITES:/__PREREQUISITES:__/" "s/^Story/!!Story/" "s/^Test/!Test/" )
+
+for i in ${reList[@]}
+do
+   
+   sed -r $i ${file} > ${file}.new
+   #echo $i
+   /bin/mv ${file}.new ${file}
+
+done
