@@ -7,7 +7,7 @@ for region in ${regions[@]}; do
     # echo "${region}: { AMI: $(aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn-ami-hvm-2016.09.0.20161028-x86_64-gp2" --region ${region} | jq -r .Images[].ImageId) },"
     # echo "${region}: { AMI: $(aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn-ami-vpc-nat-hvm-2016.09.1.20170119-x86_64-ebs" --region ${region} | jq -r .Images[].ImageId) },"
     # echo "${region}: { AMI: $(aws ec2 describe-images --filters "Name=name,Values=dcos-centos7-201608302346" --region ${region} | jq -r .Images[].ImageId) },"
-    echo -en "${region}\t"
-    aws --region ${region} ec2 describe-images --filters "Name=owner-id,Values=679593333241" "Name=description,Values=CentOS Linux 7 x86_64 HVM EBS 1708_01" | jq -r .Images[].ImageId
+    # aws --region ${region} ec2 describe-images --filters "Name=owner-id,Values=679593333241" "Name=description,Values=CentOS Linux 7 x86_64 HVM EBS 1708_01" | jq -r .Images[].ImageId
+    echo "\"${region}\": { \"AMI\": \"$(aws --region ${region} ec2 describe-images --filters "Name=description,Values=Amazon Linux AMI 2017.09.1.20180103 x86_64 HVM GP2" | jq -r .Images[].ImageId)\" },"
 done
 
