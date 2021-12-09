@@ -5,7 +5,9 @@
 userid=ammolitor
 pagenum=1
 repos=( $(curl -s -u ammolitor:$(cat ${HOME}/.github_oauth) -H 'Accept: application/vnd.github.moondragon+json, application/json, text/plain' https://api.github.com/users/${userid}/repos?page=${pagenum} | jq -r '.[].ssh_url') )
+repos=( $(curl -s -u ammolitor:$(cat ${HOME}/.github_oauth) -H 'Accept: application/vnd.github.moondragon+json, application/json, text/plain' https://api.github.com/orgs/${userid}/repos?page=${pagenum} | jq -r '.[].ssh_url') )
 
 for repo in ${repos[@]}; do
     echo ${repo}
+    git clone ${repo}
 done
