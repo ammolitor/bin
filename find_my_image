@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+reset=$(tput sgr0)
+red=$(tput setaf 1)
+blue=$(tput setaf 4)
+
+function logg () {
+    printf "${blue}##### $(date +"%H:%M:%S") #  %-56.55s #####${reset}\n" "${1}"
+}
+
+function loge () {
+    printf "${red}##### $(date +"%H:%M:%S") #  %-56.55s #####${reset}\n" "${1}"
+}
+
+if [ $# -ne 2 ]; then
+    loge "${0} takes two arguments"
+    loge "\$1 is the image repository, one of:"
+    loge "    operator"
+    loge "    sidecar"
+    loge "    fdb"
+    loge "    ycsb"
+    loge "\$2 is the tag [string] to search for"
+    exit 1
+fi
+
+case "${1}" in
+    "operator")
+    repository="foundationdb/fdb-kubernetes-operator"
+    ;;
+    "sidecar")
+    repository="foundationdb/foundationdb-kubernetes-sidecar"
+    ;;
+    "fdb")
+    repository="foundationdb/foundationdb"
+    ;;
+    "ycsb")
+    repository="foundationdb/ycsb"
+    ;;
+esac
+
+image_tag="${2}"
+
+logg "searching in: ${repository}"
+logg "for tag:      ${image_tag}"
+
+aws --output text ecr list-images \
+  --repository-name "${repository}" \
+  --filter tagStatus=TAGGED \
+  --query "imageIds[?imageTag == '${image_tag}'].imageTag"
