@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 
-if [ ${1} == 2 ]; then
+
+if [ ${1} == "2" ]; then
     PIP="pip2"
-elif [ ${1} == 3]; then
+elif [ ${1} == "3" ]; then
     PIP="pip3"
 else
     echo "please specify a pip version"

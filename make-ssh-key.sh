@@ -27,11 +27,11 @@ set -x
 #           ssh-keygen -Y sign -f key_file -n namespace file ...
 #           ssh-keygen -Y verify -f allowed_signers_file -I signer_identity -n namespace -s signature_file [-r revocation_file]
 
-keyname=foundationdb-ci
-comment="foundationdb_ci@apple.com"
+keyname=lrjenkins
+comment="Leeroy Jenkins"
 
 ssh-keygen -t rsa \
            -b 4096 \
            -N '' \
            -f ${HOME}/.ssh/${keyname}.pem \
-           -C ${comment}
+           -C "${comment}"
